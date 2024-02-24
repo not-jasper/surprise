@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hahaha</title>
+<style>
+  /* Add your CSS styles here */
+  body {
+    font-family: Arial, sans-serif;
+    background-image: url('https://virtualbackgrounds.site/wp-content/uploads/2020/07/windows-xp-wallpaper-bliss.jpg');
+    background-size: cover; /* Stretch background image to cover the entire window */
+    background-attachment: fixed; /* Keep background image fixed even when scrolling */
+    overflow: hidden;
+    margin: 0;
+  }
+  .gif {
+    position: absolute;
+    width: 200px; /* Adjust the size */
+    height: auto;
+  }
+  #text {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: Comic Sans MS, sans-serif;
+    font-size: 36px;
+    color: #FF0000; /* Rainbow effect added via JavaScript */
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000; /* Black outline */
+  }
+</style>
+</head>
+<body>
+
+<audio id="audio" autoplay loop>
+  <source src="https://epsilon.vgmsite.com/soundtracks/persona-5-dancing-in-starlight-the-complete-soundtrack/vlyloewnsn/16.%20Last%20Surprise%20%28P5D-EDIT%29.mp3" type="audio/mpeg">
+  Your browser does not support the audio element.
+</audio>
+
+<p id="text">you've been damned</p>
+
+<img class="gif" src="https://cms.palanga.live/storage/files/public/ezgif_com-rotate.gif" alt="Bouncing GIF">
+<img class="gif" src="https://media0.giphy.com/media/SGGCXpewNCEXuJYXhm/giphy.gif?cid=82a1493bnhoh37ovhq8vkb1wnfzxavn49gb1he751edvrljl&ep=v1_gifs_related&rid=giphy.gif&ct=s" alt="GIF 1">
+<img class="gif" src="https://risibank.fr/cache/medias/0/10/1037/103703/full.gif" alt="GIF 2">
+<img class="gif" src="https://media.tenor.com/4HkLW40pwKgAAAAi/patrick-patrick-star.gif" alt="GIF 3">
+<img class="gif" src="https://usagif.com/wp-content/uploads/2021/4fh5wi/pepefrg-8.gif" alt="GIF 4">
+<img class="gif" src="https://media.tenor.com/wiMyvo8ZFN0AAAAj/pinguim-penguin.gif" alt="GIF 5">
+
+<script>
+  const gifs = document.querySelectorAll(".gif");
+  
+  gifs.forEach((gif) => {
+    let posX = Math.random() * (window.innerWidth - 200); // Fixed width of 200px for all GIFs
+    let posY = Math.random() * (window.innerHeight - 200); // Fixed height of 200px for all GIFs
+    let velX = (Math.random() - 0.5) * 10; // Random velocity between -5 and 5
+    let velY = (Math.random() - 0.5) * 10; // Random velocity between -5 and 5
+
+    function animate() {
+      posX += velX;
+      posY += velY;
+
+      if (posX >= window.innerWidth - 200 || posX <= 0) {
+        velX = -velX;
+      }
+      if (posY >= window.innerHeight - 200 || posY <= 0) {
+        velY = -velY;
+      }
+
+      gif.style.left = posX + "px";
+      gif.style.top = posY + "px";
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
+  });
+
+  // Rainbow text effect
+  let rainbowColors = ['#FF0000', '#FF7F00', '#FFFF00', '#00FF00', '#0000FF', '#4B0082', '#9400D3'];
+  let text = document.getElementById('text');
+  let currentColorIndex = 0;
+
+  setInterval(function() {
+    text.style.color = rainbowColors[currentColorIndex];
+    currentColorIndex = (currentColorIndex + 1) % rainbowColors.length;
+  }, 100); // Change color every 100 milliseconds
+</script>
+
+</body>
+</html>
